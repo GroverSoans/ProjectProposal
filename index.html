@@ -3,130 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media Feed Dashboard Project Plan</title>
+    <title>MERN Authentication App Project Plan</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-    <h1>Social Media Feed Dashboard Project Plan</h1>
+    <h1>MERN Authentication App Project Plan</h1>
     <h4>Leveraged ChatGPT for the idea and webpage</h4>
 
     <div class="section">
         <h2 class="section-title">Project Overview</h2>
-        <p><span class="highlight">Project Name:</span> Social Media Feed Dashboard</p>
-        <p><span class="highlight">Description:</span> This project involves building a dashboard for a simulated social media platform. Users can create posts, comment, and like posts, with data displayed in real-time. The backend is a GraphQL API built in Go, and the frontend is a React app that interacts with the backend. Docker will be used to containerize both services, making it easy to deploy.</p>
+        <p><span class="highlight">Project Name:</span> MERN Authentication App</p>
+        <p><span class="highlight">Description:</span> This project involves creating a MERN stack application with secure user authentication. Users can register, verify their email addresses, and log in. The backend is built in Node.js with Express, the frontend uses React, and MongoDB serves as the database. The app will be containerized using Docker, and the services will be deployed on Amazon's cloud platform.</p>
     </div>
 
     <div class="section">
         <h2 class="section-title">Project Architecture</h2>
-        <h3>1. Backend (Go + GraphQL)</h3>
+        <h3>1. Backend (Node.js + Express)</h3>
         <ul>
-            <li><strong>GraphQL API:</strong> A Go-based GraphQL API will handle CRUD operations for posts, comments, and likes.</li>
-            <li><strong>Database:</strong> Use PostgreSQL to store user posts, comments, and likes.</li>
-            <li><strong>Authentication:</strong> Implement basic JWT-based authentication to restrict certain actions, like creating and liking posts.</li>
+            <li><strong>Authentication:</strong> Implement user registration, login, and email verification using JWT and Nodemailer.</li>
+            <li><strong>Database:</strong> Use MongoDB to store user information securely, including hashed passwords.</li>
+            <li><strong>API:</strong> Build RESTful APIs to handle authentication and verification processes.</li>
         </ul>
         <h3>2. Frontend (React)</h3>
         <ul>
-            <li><strong>React Dashboard:</strong> A simple React app that shows posts, allows users to add new posts, comment on posts, and like them.</li>
-            <li><strong>GraphQL Integration:</strong> Use Apollo Client to fetch and mutate data through the GraphQL API.</li>
-            <li><strong>Real-Time Updates:</strong> Use subscriptions to enable real-time updates on the dashboard (e.g., live updating comments or like counts).</li>
+            <li><strong>React Interface:</strong> Create a clean user interface for registration, login, and account verification.</li>
+            <li><strong>API Integration:</strong> Use Axios or Fetch to communicate with the backend APIs.</li>
+            <li><strong>User Experience:</strong> Add visual feedback, such as success/failure messages and email verification prompts.</li>
         </ul>
         <h3>3. Docker Setup</h3>
         <ul>
-            <li><strong>Dockerize:</strong> Create Dockerfiles for the Go backend and React frontend, and use Docker Compose to orchestrate services, including PostgreSQL.</li>
+            <li><strong>Dockerize:</strong> Create Dockerfiles for the Node.js backend and React frontend, and use Docker Compose to manage services.</li>
+        </ul>
+        <h3>4. Hosting (Amazon)</h3>
+        <ul>
+            <li><strong>Amazon Hosting:</strong> Deploy the frontend to Amazon S3 or CloudFront, and the backend to an Amazon EC2 instance or ECS.</li>
         </ul>
     </div>
 
     <div class="section">
         <h2 class="section-title">Project Breakdown</h2>
-        <h3>1. Backend Setup with GraphQL in Go (10 hours)</h3>
-        <p>Set up a Go project with a basic GraphQL schema, implement CRUD functionality, and connect to PostgreSQL.</p>
+        <h3>1. Backend Development with Node.js (10 hours)</h3>
+        <p>Set up a Node.js project, implement user authentication, and integrate email verification using Nodemailer.</p>
 
-        <h3>2. Frontend with React and GraphQL (8 hours)</h3>
-        <p>Set up a React project, build the main components, and add real-time subscriptions for comments and likes.</p>
+        <h3>2. Frontend Development with React (8 hours)</h3>
+        <p>Set up a React project, build components for registration and login, and connect them to the backend APIs.</p>
 
-        <h3>3. Authentication (3 hours)</h3>
-        <p>Implement JWT-based authentication in the Go backend and integrate it with the React app.</p>
+        <h3>3. Email Verification Integration (3 hours)</h3>
+        <p>Implement email verification in the backend and design the user flow in the React frontend.</p>
 
         <h3>4. Dockerization (3 hours)</h3>
-        <p>Write Dockerfiles for both the Go backend and React frontend, and create a <code>docker-compose.yml</code> file.</p>
+        <p>Write Dockerfiles for the Node.js backend and React frontend, and create a <code>docker-compose.yml</code> file.</p>
 
-        <h3>5. Deployment on Azure (4 hours)</h3>
-        <p>Deploy the Docker containers to Azure App Service or AKS.</p>
+        <h3>5. Deployment on Amazon (4 hours)</h3>
+        <p>Deploy the Docker containers for both services on Amazon S3/CloudFront (frontend) and ECS/EC2 (backend).</p>
 
         <h3>6. Testing and Final Adjustments (2 hours)</h3>
         <p>Test API responses, conduct end-to-end testing, and add error handling and UX improvements.</p>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">Sample Code Snippets</h2>
-        <h3>GraphQL Schema for the Go Backend</h3>
-        <div class="code-snippet">
-            type Post {<br>
-              id: ID!<br>
-              content: String!<br>
-              author: User!<br>
-              comments: [Comment!]<br>
-              likes: Int!<br>
-            }<br><br>
-
-            type Comment {<br>
-              id: ID!<br>
-              content: String!<br>
-              author: User!<br>
-              post: Post!<br>
-            }<br><br>
-
-            type Query {<br>
-              posts: [Post!]!<br>
-            }<br><br>
-
-            type Mutation {<br>
-              createPost(content: String!): Post!<br>
-              createComment(postId: ID!, content: String!): Comment!<br>
-              likePost(postId: ID!): Post!<br>
-            }
-        </div>
-        
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">Suggested Timeline</h2>
-        <table>
-            <tr>
-                <th>Task</th>
-                <th>Estimated Hours</th>
-            </tr>
-            <tr>
-                <td>Backend with GraphQL</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>Frontend with React</td>
-                <td>8</td>
-            </tr>
-            <tr>
-                <td>Authentication</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>Dockerization</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>Deployment on Azure</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>Testing & Adjustments</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <th>Total</th>
-                <th>30</th>
-            </tr>
-        </table>
     </div>
 </div>
 
